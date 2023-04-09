@@ -1,0 +1,91 @@
+.Table {
+    border-collapse: collapse;
+    margin: 20px;
+    font-family: "Roboto", sans-serif;
+    background-color: #DCEDC8;
+    border-radius: 5px;
+}
+
+.buttons {
+    margin: 5px
+}
+
+.add-button {
+    border-radius: 5px 5px 0 0;
+    border-bottom-color: lightblue;
+    margin: 0;
+    padding: 0;
+}
+
+.remove-button {
+    border-radius: 0 0 5px 5px;
+    border-top-color: lightblue;
+    margin: 0;
+    padding: 0;
+}
+
+.Table th,
+.Table td {
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.Table th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.Table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.Table th input,
+.Table td input {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.Table th button,
+.Table td button {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 5px;
+    color: #757575;
+    transition: all 0.3s;
+}
+
+.Table button:hover,
+.Table button:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+.Table button,
+.Table button {
+    background-color: #E1F5FE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-radius: 5px;*/
+    height: 32px;
+    width: 66px;
+    box-shadow: 1px 1px 3px rgba(1, 87, 155, 0.12), 0px 1px 2px rgba(63, 81, 181, 0.24);
+    transition: all 0.3s;
+}
+
+.Table button:hover,
+.Table button:hover {
+    background-color: #eee;
+    color: #000;
+}

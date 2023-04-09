@@ -6,6 +6,13 @@ const Table = () => {
     const [headerRows, setHeaderRows] = useState(['Object 1']);
     const [data, setData] = useState([[0.0]]);
 
+    function validate(str) {
+        str = str.trim();
+        const regex = /^\d+(\.\d{1,2})?$/;
+        return regex.test(str);
+    }
+
+
     const addColumn = () => {
         // const newHeader = prompt('Enter header for new column:');
         const newHeader = "Trait " + (headerColumns.length + 1);
@@ -94,9 +101,10 @@ const Table = () => {
                                 type="number"
                                 step="0.01"
                                 value={data[rowIndex][columnIndex]}
-                                onChange={event =>
-                                    handleDataChange(rowIndex, columnIndex, event.target.value)
-                                }
+                                onChange={event => {
+                                    if (validate(event.target.value))
+                                        handleDataChange(rowIndex, columnIndex, event.target.value)
+                                }}
                             />
                         </td>
                     ))}

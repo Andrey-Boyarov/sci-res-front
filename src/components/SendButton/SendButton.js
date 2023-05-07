@@ -1,25 +1,37 @@
 import React, {useContext} from 'react';
 import fetch_ from "../../tools/Interceptor";
 import InputContext from "../../context/InputContext";
+import "./SendButton.css"
 
 function SendButton(props) {
     const {
         columnsState: [headerColumns, setHeaderColumns],
         rowsState: [headerRows, setHeaderRows],
-        dataState: [data, setData]
+        dataState: [data, setData],
+        autoShrink: [autoShrink, setAutoShrink],
+        response: [response, setResponse],
+        isLoading: [isLoading, setIsLoading]
     } = useContext(InputContext)
 
     const handleClick = () => {
-        fetch_('calculate', {
+        setIsLoading(true)
+        fetch_('fca/getConcepts', {
             method: 'POST',
-            body: {
-                objects: headerRows,
-                traits: headerColumns,
-                data: data
+            body: JSON.stringify({
+                data: data,
+                headerColumns: headerColumns,
+                headerRows: headerRows,
+                autoShrink: autoShrink
+            }),
+            headers: {
+                "Content-Type": "application/json",
             }
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                setIsLoading(false)
+                setResponse(data)
+            })
             .catch(error => console.error(error));
     };
 

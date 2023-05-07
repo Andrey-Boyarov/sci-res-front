@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import './Table.css';
+import InputContext from "../../context/InputContext";
 
 const Table = () => {
-    const [headerColumns, setHeaderColumns] = useState(['Trait 1']);
-    const [headerRows, setHeaderRows] = useState(['Object 1']);
-    const [data, setData] = useState([[0.0]]);
+    const {
+        columnsState: [headerColumns, setHeaderColumns],
+        rowsState: [headerRows, setHeaderRows],
+        dataState: [data, setData]
+    } = useContext(InputContext)
 
     function validate(str) {
         str = str.trim();
@@ -20,6 +23,7 @@ const Table = () => {
             setHeaderColumns([...headerColumns, newHeader]);
             setData(data.map(row => [...row, 0.0]));
         }
+        console.log(data)
     };
 
     const removeColumn = () => {
@@ -98,12 +102,16 @@ const Table = () => {
                     {headerColumns.map((header, columnIndex) => (
                         <td key={`${rowIndex}-${columnIndex}`}>
                             <input
-                                type="number"
-                                step="0.01"
+                                type="text"
                                 value={data[rowIndex][columnIndex]}
                                 onChange={event => {
-                                    if (validate(event.target.value))
-                                        handleDataChange(rowIndex, columnIndex, event.target.value)
+                                    if (validate(event.target.value)) {
+                                        let v = event.target.value
+                                        while (v.charAt(0) === '0') {
+                                            v = v.substring(1)
+                                        }
+                                        handleDataChange(rowIndex, columnIndex, v)
+                                    }
                                 }}
                             />
                         </td>

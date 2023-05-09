@@ -65,7 +65,16 @@ const Table = () => {
         <table className="Table">
             <thead>
             <tr>
-                <th />
+                <div className="ButtonsContainer">
+                    <div className="buttons">
+                        <button className="add-button" onClick={addRow}>+</button>
+                        <button className="remove-button" onClick={removeRow}>-</button>
+                    </div>
+                    <div className="buttons">
+                        <button className="add-button" onClick={addColumn}>+</button>
+                        <button className="remove-button" onClick={removeColumn}>-</button>
+                    </div>
+                </div>
                 {headerColumns.map((header, columnIndex) => (
                     <th key={columnIndex}>
                         <input
@@ -79,10 +88,6 @@ const Table = () => {
                         />
                     </th>
                 ))}
-                <div className="buttons">
-                    <button className="add-button" onClick={addColumn}>+</button>
-                    <button className="remove-button" onClick={removeColumn}>-</button>
-                </div>
             </tr>
             </thead>
             <tbody>
@@ -118,10 +123,6 @@ const Table = () => {
                     ))}
                 </tr>
             ))}
-            <div className="buttons">
-                <button className="add-button" onClick={addRow}>+</button>
-                <button className="remove-button" onClick={removeRow}>-</button>
-            </div>
             </tbody>
         </table>
     );

@@ -15,6 +15,7 @@ function SendButton(props) {
 
     const handleClick = () => {
         setIsLoading(true)
+        setResponse([])
         fetch_('fca/getConcepts', {
             method: 'POST',
             body: JSON.stringify({
@@ -35,11 +36,9 @@ function SendButton(props) {
             .catch(error => console.error(error));
     };
 
-    return (
-        <button onClick={handleClick}>
-            {props.text}
-        </button>
-    );
+    return (<button className="SendButton" onClick={handleClick}>
+                {props.text}
+            </button>);
 }
 
 export default SendButton;

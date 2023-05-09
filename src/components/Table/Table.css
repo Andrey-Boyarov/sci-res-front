@@ -1,13 +1,22 @@
 .Table {
     border-collapse: collapse;
-    margin: 20px;
+    margin: 20px 20px 0 20px;
     font-family: "Roboto", sans-serif;
     background-color: #DCEDC8;
     border-radius: 5px;
+    width: 100%;
 }
 
 .buttons {
-    margin: 5px
+    margin: 15px;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.ButtonsContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .add-button {

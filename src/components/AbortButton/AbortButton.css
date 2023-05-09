@@ -1,5 +1,5 @@
-.SendButton {
-    background-color: #E1F5FE;
+.AbortButton {
+    background-color: indianred;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
     border: none;
 }
 
-.SendButton:hover {
+.AbortButton:hover {
     background-color: #eee;
     color: #000;
     border: none;

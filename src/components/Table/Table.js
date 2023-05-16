@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Table.css';
 import InputContext from "../../context/InputContext";
 
@@ -8,6 +8,27 @@ const Table = () => {
         rowsState: [headerRows, setHeaderRows],
         dataState: [data, setData]
     } = useContext(InputContext)
+
+    useEffect(() => {
+        const hc = window.localStorage.getItem('headerColumns')
+        const hr = window.localStorage.getItem('headerRows')
+        const d = window.localStorage.getItem('data')
+        if (hc && hr && d) {
+            setHeaderColumns(JSON.parse(hc));
+            setHeaderRows(JSON.parse(hr));
+            setData(JSON.parse(d));
+        } else {
+            setHeaderColumns(['Trait 1']);
+            setHeaderRows(['Object 1']);
+            setData([[0.0]]);
+        }
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('headerColumns', JSON.stringify(headerColumns));
+        window.localStorage.setItem('headerRows', JSON.stringify(headerRows));
+        window.localStorage.setItem('data', JSON.stringify(data));
+    }, [data, headerColumns, headerRows]);
 
     function validate(str) {
         str = str.trim();
